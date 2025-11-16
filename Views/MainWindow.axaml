@@ -15,11 +15,19 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Panel>
-		<Button HorizontalAlignment="Center" VerticalAlignment="Center">Organize</Button>
-        <TextBox Text="{Binding Greeting}" 
+    <StackPanel>
+        <TextBlock Text="{Binding HeaderText}" 
                  HorizontalAlignment="Center" 
-                 VerticalAlignment="Top" Margin="20"></TextBox>
-    </Panel>
+                 VerticalAlignment="Top" Margin="20"
+                 FontSize="24"
+                 FontWeight="DemiBold"></TextBlock>
+        <WrapPanel Margin="40" FlowDirection="LeftToRight"> 
+            <Label>Organize by</Label>
+          <ComboBox Name="organizeBy" Margin="10, 0, 10, 0" SelectedIndex="0" MaxDropDownHeight="100"
+                     ItemsSource="{Binding OrganizeTypeOptions}" DisplayMemberBinding="{Binding DisplayName}" AutoScrollToSelectedItem="True"> 
+          </ComboBox>
+        </WrapPanel>
+		<Button Name="organizeButton" Click="OrganizeButton_OnClick" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20">Organize</Button>
+    </StackPanel>
 
 </Window>
